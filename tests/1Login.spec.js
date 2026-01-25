@@ -1,5 +1,6 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
+import LoginPage from '../pages/loginPage';
 
 test('has title', async ({ page }) => {
   await page.goto("/");
@@ -8,34 +9,41 @@ test('has title', async ({ page }) => {
   await expect(page).toHaveTitle(/Garibook - City to City/);
 });
 
-test.only('Login and verify OTP', async ({ page }) => {
-  await page.goto("/");
-
+test('User should login successfully using OTP', async ({ page }) => {
   
-  await page.getByRole('link', { name: 'login' }).click();
-   await page.waitForTimeout(2000);
-  await page.locator('input[name="mobile"]').fill('1916603029');
+   const login = new LoginPage(page);
+  await page.goto("/");
+  await login.getOTP('1916603017');
+  await login.extractOTPandFill();
   await page.waitForTimeout(2000);
-  await page.getByRole('button', {name: 'Send code'}).click();
-
-
-const text = await page.locator('.alert-info').innerText();
-
-// @ts-ignore
-const otp = text.match(/\d+/)[0];
-console.log(otp);
-
-for (let i = 0; i < otp.length; i++) {
-  await page.fill(`#otp${i + 1}`, otp[i]);
-}
-
-await page.getByRole('button', { name: 'Continue', exact: true }).click();
-
-
 //assert that login was successful
-const toast = page.locator('.toast-success');
-
-// Wait for toast to be visible
 await expect(page.getByText('Logged In Successfully')).toBeVisible();
 
 });
+
+test('Phone number Validation check with invalid number', async ({ page }) => {
+   const login = new LoginPage(page);
+  await page.goto("/");
+  await login.getOTP('2123344567');
+  //assert that login was successful and validation message displayed
+await expect(
+  page.getByText('Invalid! Please provide a valid phone number')
+).toBeVisible();
+});
+
+test.only('User should not login with invalid OTP', async ({ page }) => {
+  const login = new LoginPage(page);
+  await page.goto("/");
+  await login.getOTP('1916603006');
+  const otp = '1234';
+  for (let i = 0; i < otp.length; i++) {
+      await page.fill(`#otp${i + 1}`, otp[i]);
+    }
+  const continueButton = page.getByRole('button', { name: 'Continue', exact: true });
+    // Continue
+    await continueButton.click();
+    await page.waitForTimeout(3000);
+  await expect(
+  page.getByText("The OTP you’ve entered is incorrect. Please try again")
+).toBeVisible();
+})
