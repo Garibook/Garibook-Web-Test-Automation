@@ -18,8 +18,8 @@ class LoginPage {
     await this.loginBtn.click();
     // Enter mobile number
     await this.mobileInput.click();
-    await this.page.waitForTimeout(2000);
-    await this.mobileInput.pressSequentially(mobileNumber, { delay: 50 });
+
+    await this.mobileInput.pressSequentially(mobileNumber, { delay: 40 });
 
     // Send OTP
     await this.sendCodeButton.click();
