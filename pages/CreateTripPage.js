@@ -25,7 +25,7 @@ class TripPage {
       name: "Enter Drop-off Location",
     });
     this.dropoffSuggestion = page.getByRole("button", {
-      name: "Khulna University, Sher-E-",
+      name: "Bagura Mistanno Vandar, Bakshiganj, Bangladesh",
     });
 
     // Date & time
@@ -49,7 +49,7 @@ class TripPage {
       name: "Enter Stoppage Location",
     });
     this.stopageSelect = page.getByRole("button", {
-      name: "Mawa Ghat Fish Market,",
+      name: "Tangail Bypass, Tangail, Bangladesh",
     });
 
     //trip confirm
@@ -60,8 +60,9 @@ class TripPage {
     this.profileNotUpdatedPopup = page.locator(
       '.swal2-popup:has-text("Profile Not Updated")',
     );
-    // profile complete locators
-    this.ProfilecontinueButton = page.getByRole("button", { name: "Continue" });
+    this.ProfilecontinueButton = page
+      .locator(".swal2-popup")
+      .getByRole("button", { name: "Continue" });
     this.nameTextbox = page.getByRole("textbox", { name: "Name" });
   }
 
@@ -77,7 +78,7 @@ class TripPage {
 
     // Drop-off location
     await this.dropoffInput.click();
-    await this.dropoffInput.fill("khulna");
+    await this.dropoffInput.fill("Bagura");
     await this.dropoffSuggestion.click();
 
     // Date & time
@@ -92,7 +93,7 @@ class TripPage {
   async addStopage() {
     await this.stopageBtn.click();
     await this.stopageLoc.click();
-    await this.searchStopage.fill("Mawa ghat");
+    await this.searchStopage.fill("tangail");
     await this.stopageSelect.click();
   }
   async confirmTrip() {
@@ -103,6 +104,7 @@ class TripPage {
       await this.ProfilecontinueButton.click();
 
       await this.profileComplete();
+      await this.confirmTripBtn.click();
     }
   }
   async profileComplete() {
