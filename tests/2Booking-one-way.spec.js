@@ -4,9 +4,9 @@ import LoginPage from "../pages/loginPage";
 
 test.only("Book one way car", async ({ page }) => {
   await page.goto("/");
-
   const login = new LoginPage(page);
-  await login.getOTP("1916602019");
+
+  await login.getOTP("1916602020");
   await login.extractOTPandFill();
   await page.waitForTimeout(2000);
   //slide down
@@ -23,22 +23,12 @@ test.only("Book one way car", async ({ page }) => {
     window.scrollBy(0, 300);
   });
   await trip.confirmTrip();
-  await page.waitForTimeout(4000);
+  await page.waitForTimeout(3000);
   await trip.checkAndCompleteProfile();
-  await trip.confirmTrip();
-  await page.pause();
+  //await trip.confirmTrip();
+  await page.waitForTimeout(2000);
+  //Assertion for trip created successfully
+  await expect(page.locator(".swal2-popup .swal2-html-container")).toHaveText(
+    "Trip created successfuly",
+  );
 });
-
-//   await page.waitForTimeout(4000);
-//   await page.getByRole('button', { name: 'Add Stops' }).click();
-//   await page.getByRole('textbox', { name: 'Enter Stoppage Location' }).click();
-//   await page.getByRole('textbox', { name: 'Enter Stoppage Location' }).fill('Mawa ghat');
-//   await page.getByRole('button', { name: 'Mawa Ghat Fish Market,' }).click();
-//   await page.getByRole('button', { name: 'Request Your Trip' }).click();
-//   await page.getByRole('button', { name: 'Continue' }).click();
-//   await page.getByRole('textbox', { name: 'Name' }).click();
-//   await page.getByRole('textbox', { name: 'Name' }).fill('Random Name');
-//   await page.getByRole('button', { name: 'Continue', exact: true }).click();
-//   await page.getByRole('button', { name: 'Request Your Trip' }).click();
-//   await page.goto('http://fe.garibook.com/trip/ongoing-bidding');
-// });
