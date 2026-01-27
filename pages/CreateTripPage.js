@@ -11,6 +11,21 @@ class TripPage {
     this.sedanPremiumBtn = page.getByRole("button", {
       name: "Sedan Premium 4 Seats",
     });
+    this.noah7SeatsBtn = page.getByRole("button", {
+      name: "Noah 7 Seats",
+    });
+
+    this.hiAce11SeatsBtn = page.getByRole("button", {
+      name: "HiAce 11 Seats",
+    });
+
+    this.sedanEconomy4SeatsBtn = page.getByRole("button", {
+      name: "Sedan Economy 4 Seats",
+    });
+
+    this.chanderGari8SeatsBtn = page.getByRole("button", {
+      name: "Chander Gari 8 Seats",
+    });
 
     // Pickup
     this.pickupInput = page.getByRole("textbox", {
@@ -30,11 +45,14 @@ class TripPage {
 
     // Date & time
     this.dateInput = page.getByRole("textbox", { name: "MM/DD/YYYY 00:00 PM" });
-    // this.dateOption = page.getByRole("option", {
-    //   name: "Choose Friday, January 30th,",
-    // });
-    // this.timeOption = page.getByRole("option", { name: "10:00 AM" });
+    //Return date & time for Round way
+    this.pickupDateTime = page
+      .getByRole("tabpanel", { name: "Car Rental" })
+      .locator('input[name="pickup_date_time"]');
+    this.returnDateTime = page.locator('input[name="return_date_time"]');
 
+    //radio button
+    this.roundTripRadio = page.getByRole("radio", { name: "Round Way" });
     // Continue button
     this.TripcontinueBtn = page.getByRole("button", {
       name: "Continue button-icon",
@@ -117,6 +135,9 @@ class TripPage {
     await this.page
       .getByRole("button", { name: "Continue", exact: true })
       .click();
+  }
+  async createRoundTrip() {
+    await this.roundTripRadio.check();
   }
 }
 
