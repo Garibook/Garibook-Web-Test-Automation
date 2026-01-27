@@ -45,7 +45,7 @@ class TripPage {
 
     // Date & time
     this.dateInput = page.getByRole("textbox", { name: "MM/DD/YYYY 00:00 PM" });
-    //Return date & time for Round way
+    //Round way date & time
     this.pickupDateTime = page
       .getByRole("tabpanel", { name: "Car Rental" })
       .locator('input[name="pickup_date_time"]');
@@ -123,6 +123,7 @@ class TripPage {
 
       await this.profileComplete();
       await this.confirmTripBtn.click();
+      await page.waitForTimeout(2000);
     }
   }
   async profileComplete() {
@@ -138,6 +139,30 @@ class TripPage {
   }
   async createRoundTrip() {
     await this.roundTripRadio.check();
+    await this.selectCarTypeBtn.click();
+    await this.sedanPremiumBtn.click();
+
+    // Pickup location
+    await this.pickupInput.click();
+    await this.pickupInput.fill("niketon");
+    await this.pickupSuggestion.click();
+
+    // Drop-off location
+    await this.dropoffInput.click();
+    await this.dropoffInput.fill("Bagura");
+    await this.dropoffSuggestion.click();
+
+    // Date & time
+    await this.pickupDateTime.click();
+    await this.pickupDateTime.fill("2026-02-03 09:00 AM");
+    await this.pickupDateTime.press("Enter");
+    await this.returnDateTime.click();
+    await this.returnDateTime.fill("2026-02-05 09:00 AM");
+    await this.returnDateTime.press("Enter");
+    await this.page.waitForTimeout(2000);
+
+    // Continue
+    await this.TripcontinueBtn.click();
   }
 }
 
