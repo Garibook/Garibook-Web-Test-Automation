@@ -58,7 +58,6 @@ test.describe.serial("Login & round-way Trip create flow test", () => {
     await page.waitForTimeout(3000);
     await tripRound.checkAndCompleteProfile();
     //await trip.confirmTrip();
-    await page.waitForTimeout(2000);
     //Assertion for trip created successfully
     await expect(page.locator("#swal2-html-container")).toHaveText(
       "You have ongoing trips. Please complete the trips before starting a new one.",
