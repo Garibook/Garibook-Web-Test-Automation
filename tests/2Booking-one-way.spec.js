@@ -28,7 +28,6 @@ test.describe.serial("Login & one-way Trip create flow test", () => {
     await page.waitForTimeout(3000);
     await trip.checkAndCompleteProfile();
     //await trip.confirmTrip();
-    await page.waitForTimeout(2000);
     //Assertion for trip created successfully
     await expect(page.locator(".swal2-popup .swal2-html-container")).toHaveText(
       "Trip created successfuly",
@@ -60,7 +59,7 @@ test.describe.serial("Login & one-way Trip create flow test", () => {
     await page.waitForTimeout(3000);
     await trip.checkAndCompleteProfile();
     //await trip.confirmTrip();
-    await page.waitForTimeout(2000);
+
     await expect(page.locator(".swal2-popup .swal2-html-container")).toHaveText(
       "You have ongoing trips. Please complete the trips before starting a new one.",
     );
