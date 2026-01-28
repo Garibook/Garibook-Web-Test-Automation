@@ -20,7 +20,7 @@ test.describe.serial("Login & Airport Rental Flow", () => {
     const tripAirport = new AirportTripPage(page);
 
     // fillAirportTripForm already handles clicking the "Airport Rental" tab
-    await tripAirport.fillAirportTripForm();
+    await tripAirport.fillAirportTripFormAirport();
 
     await tripAirport.confirmTrip();
 
@@ -44,7 +44,7 @@ test.describe.serial("Login & Airport Rental Flow", () => {
 
     const tripAirport = new AirportTripPage(page);
 
-    await tripAirport.fillAirportTripForm();
+    await tripAirport.fillAirportTripFormAirport();
 
     await tripAirport.confirmTrip();
     
