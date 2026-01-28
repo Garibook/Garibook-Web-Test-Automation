@@ -9,6 +9,18 @@ class AirportTripPage {
     this.selectCarTypeBtn = page.getByRole("button", { name: "Select Car Type" });
     this.sedanOption = page.getByRole("button", { name: "Sedan 4 Seats" });
 
+      // Inside constructor(page)
+    this.fromHomeRadio = page.getByRole('radio', { name: 'From Home' });
+
+    // Pickup (Now a textbox for Home address)
+    this.pickupInputHome = page.getByRole('textbox', { name: 'Enter Pickup Location' });
+    this.pickupSuggestionHome = page.getByRole('button', { name: 'Mirpur-1, Dhaka, Bangladesh' });
+
+        // Drop-off Airport Locators (Fixed)
+    this.airportDropdown = page.locator('.rs__control').filter({ hasText: 'Select Airport' });
+    this.airportOption = page.getByRole('option', { name: 'Hazrat Shahjalal' });
+
+
     this.airportInputContainer = page.locator('.rs__input-container');
     this.selectAirport = page.getByRole("option", { name: "Hazrat Shahjalal" });
 
@@ -28,7 +40,7 @@ class AirportTripPage {
     this.nameTextbox = page.getByRole("textbox", { name: "Name" });
   }
 
-  async fillAirportTripForm() {
+  async fillAirportTripFormAirport() {
     await this.airportRentalBtn.click();
     await this.selectCarTypeBtn.click();
     await this.sedanOption.click();
@@ -44,14 +56,41 @@ class AirportTripPage {
 
     // --- Robust Date Handling ---
     await this.dateInput.click();
-    // Instead of just filling, we click a date to ensure the calendar triggers
-    // This selects "Today" or the first available date if fill is blocked
+   
     await this.page.keyboard.type("02/20/2026 10:00 AM");
     await this.page.keyboard.press("Enter");
     
     await this.page.waitForTimeout(1000); // Small pause for the UI to register inputs
     await this.tripContinueBtn.click();
   }
+
+async fillAirportTripFormHome() {
+    await this.airportRentalBtn.click();
+    await this.fromHomeRadio.check();
+    await this.selectCarTypeBtn.click();
+    await this.sedanOption.click();
+
+    // 3. Fill Home Pickup Location
+    await this.pickupInputHome.click();
+    await this.pickupInputHome.fill('mirpur');
+    await this.pickupSuggestionHome.click();
+
+  
+    await this.airportDropdown.click();
+    await this.airportOption.waitFor({ state: 'visible' });
+    await this.airportOption.click();
+  
+
+
+    await this.dateInput.click();
+   
+    await this.page.keyboard.type("02/20/2026 10:00 AM");
+    await this.page.keyboard.press("Enter");
+    
+    await this.page.waitForTimeout(1000); // Small pause for the UI to register inputs
+    await this.tripContinueBtn.click();
+  }
+
   
   async confirmTrip() {
     // Wait up to 15 seconds as calculations/pricing might take a moment
