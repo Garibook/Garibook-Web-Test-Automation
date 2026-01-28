@@ -4,7 +4,7 @@ import LoginPage from "../pages/loginPage";
 import { getMobile } from "../utils/mobileDataRead";
 
 // 1. Ensure all tests are INSIDE the .serial block so they share the same state/login session logic
-test.describe.serial("Login & Airport Rental Flow", () => {
+test.describe.serial("Login & Airport Rental Flow from Airport", () => {
   test("Book Airport Rental", async ({ page }) => {
     await page.goto("/");
     const login = new LoginPage(page);
@@ -31,7 +31,7 @@ test.describe.serial("Login & Airport Rental Flow", () => {
     );
   });
 
-  test("User should not be able to book if an airport trip already exists", async ({
+  test("User should not be able to book if an airport trip from airport already exists", async ({
     page,
   }) => {
     await page.goto("/");
