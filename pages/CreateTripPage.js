@@ -199,7 +199,7 @@ class TripPage {
     await this.additionalInfoField.click();
     await this.additionalInfoField.fill(faker.lorem.paragraph());
   }
-  
+
   async clickPlusRandom() {
     const times = Math.floor(Math.random() * 24) + 1; // 1–24 clicks
 

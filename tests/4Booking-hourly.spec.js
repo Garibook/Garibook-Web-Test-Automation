@@ -16,7 +16,7 @@ test("Book Car hourly successfully", async ({ page }) => {
   });
 
   const hourlyTrip = new tripPage(page);
-  await hourlyTrip.createTrip();
+  await hourlyTrip.createHourlyTrip();
   await page.waitForTimeout(4000);
   //slide down
   await page.evaluate(() => {
