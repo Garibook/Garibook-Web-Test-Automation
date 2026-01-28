@@ -18,6 +18,7 @@ test.describe.serial("Login & Airport Rental Flow", () => {
     await page.waitForLoadState('networkidle');
 
     const tripAirport = new AirportTripPage(page);
+<<<<<<< Updated upstream:tests/4Booking-Airport-Rental.spec.js
     
     // fillAirportTripForm already handles clicking the "Airport Rental" tab
     await tripAirport.fillAirportTripForm();
@@ -25,6 +26,15 @@ test.describe.serial("Login & Airport Rental Flow", () => {
     await tripAirport.confirmTrip();
     
     // The profile check usually triggers after the first 'Request'
+=======
+
+   
+    await tripAirport.fillAirportTripFormAirport();
+
+    await tripAirport.confirmTrip();
+
+    
+>>>>>>> Stashed changes:tests/5Booking-Airport-Rental-airport.spec.js
     await tripAirport.checkAndCompleteProfile();
 
    
@@ -44,9 +54,14 @@ test.describe.serial("Login & Airport Rental Flow", () => {
 
     const tripAirport = new AirportTripPage(page);
 
+<<<<<<< Updated upstream:tests/4Booking-Airport-Rental.spec.js
     
     await tripAirport.fillAirportTripForm();
     
+=======
+    await tripAirport.fillAirportTripFormAirport();
+
+>>>>>>> Stashed changes:tests/5Booking-Airport-Rental-airport.spec.js
     await tripAirport.confirmTrip();
     
     
