@@ -31,11 +31,7 @@ test("Garibook Page Navigation Smoke Test with 10s Delay", async ({
     await page.waitForTimeout(5000);
 
     await page.evaluate(async () => {
-<<<<<<< HEAD
-      window.scrollBy({ top: 3000, behavior: "smooth" });
-=======
-      window.scrollBy({ top: 5000, behavior: 'smooth' });
->>>>>>> 52370291a7d866664fec76bf890fbeee08ad0d34
+      window.scrollBy({ top: 5000, behavior: "smooth" });
     });
 
     await page.waitForTimeout(2000);
