@@ -5,8 +5,7 @@ import CancelTrip from "../pages/cancelTrip";
 test("Cancel Trip successfully", async ({ page }) => {
   await page.goto("/");
   const login = new LoginPage(page);
-  const mobile = "1770988783";
-  //getMobile("mobile4");
+  const mobile = getMobile("mobile3");
   await login.getOTP(mobile);
   await login.extractOTPandFill();
   await page.waitForTimeout(3000);
