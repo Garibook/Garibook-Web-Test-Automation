@@ -31,7 +31,7 @@ test('Garibook Page Navigation Smoke Test with 10s Delay', async ({ page }, test
 
    
     await page.evaluate(async () => {
-      window.scrollBy({ top: 3000, behavior: 'smooth' });
+      window.scrollBy({ top: 5000, behavior: 'smooth' });
     });
 
    
