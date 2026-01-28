@@ -19,8 +19,13 @@ test.describe.serial("Login & Airport Rental Flow from Home", () => {
     const tripAirport = new AirportTripPage(page);
 
 <<<<<<<< Updated upstream:tests/6Booking-Airport-Rental-Home.spec.js
+<<<<<<<< Updated upstream:tests/6Booking-Airport-Rental-Home.spec.js
     
     await tripAirport.fillAirportTripFormHome();
+========
+   
+    await tripAirport.fillAirportTripFormAirport();
+>>>>>>>> Stashed changes:tests/5Booking-Airport-Rental-airport.spec.js
 ========
    
     await tripAirport.fillAirportTripFormAirport();
@@ -50,7 +55,11 @@ test.describe.serial("Login & Airport Rental Flow from Home", () => {
     const tripAirport = new AirportTripPage(page);
 
 <<<<<<<< Updated upstream:tests/6Booking-Airport-Rental-Home.spec.js
+<<<<<<<< Updated upstream:tests/6Booking-Airport-Rental-Home.spec.js
     await tripAirport.fillAirportTripFormHome();
+========
+    await tripAirport.fillAirportTripFormAirport();
+>>>>>>>> Stashed changes:tests/5Booking-Airport-Rental-airport.spec.js
 ========
     await tripAirport.fillAirportTripFormAirport();
 >>>>>>>> Stashed changes:tests/5Booking-Airport-Rental-airport.spec.js
