@@ -35,6 +35,15 @@ class TripPage {
       name: "NIKETON , GULSHAN, Road",
     });
 
+    //pickup selectors for hourly
+    this.hourlyPickupSuggestion = page.getByRole("button", {
+      name: "Mohakhali Model High School, Mohakhali School Road, Dhaka, Bangladesh",
+    });
+    this.plusBtn = page.getByRole("button", { name: "+" }); //hour increase '+' button
+    this.additionalInfoField = page.getByRole("textbox", {
+      name: "Write Additional Info Here",
+    }); //additional info field for hourly trip
+
     // Drop-off
     this.dropoffInput = page.getByRole("textbox", {
       name: "Enter Drop-off Location",
@@ -53,6 +62,7 @@ class TripPage {
 
     //radio button
     this.roundTripRadio = page.getByRole("radio", { name: "Round Way" });
+    this.hourlyTripRadio = page.getByRole("radio", { name: "Hourly" });
     // Continue button
     this.TripcontinueBtn = page.getByRole("button", {
       name: "Continue button-icon",
@@ -163,6 +173,39 @@ class TripPage {
 
     // Continue
     await this.TripcontinueBtn.click();
+  }
+  async createHourlyTrip() {
+    //check hourly radio
+    await this.hourlyTripRadio.check();
+    //Choose car
+    await this.selectCarTypeBtn.click();
+    await this.noah7SeatsBtn.click();
+
+    // Pickup location
+    await this.pickupInput.click();
+    await this.pickupInput.fill("mohakhali");
+    await this.hourlyPickupSuggestion.click();
+
+    // Date & time
+    await this.dateInput.click();
+    await this.dateInput.fill("2026-02-03 09:00 AM");
+    await this.dateInput.press("Enter");
+    await this.page.waitForTimeout(2000);
+    await this.clickPlusRandom();
+
+    // Continue
+    await this.TripcontinueBtn.click();
+    //additional info
+    await this.additionalInfoField.click();
+    await this.additionalInfoField.fill(faker.lorem.paragraph());
+  }
+  
+  async clickPlusRandom() {
+    const times = Math.floor(Math.random() * 24) + 1; // 1–24 clicks
+
+    for (let i = 0; i < times; i++) {
+      await this.plusBtn.click();
+    }
   }
 }
 
