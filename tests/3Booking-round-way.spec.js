@@ -33,7 +33,7 @@ test.describe.serial("Login & round-way Trip create flow test", () => {
       "Trip created successfuly",
     );
   });
-  test.only("User should not be able to Book Round way car if trip already exist", async ({
+  test("User should not be able to Book Round way car if trip already exist", async ({
     page,
   }) => {
     await page.goto("/");
