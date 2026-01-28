@@ -133,7 +133,7 @@ class TripPage {
 
       await this.profileComplete();
       await this.confirmTripBtn.click();
-      await page.waitForTimeout(2000);
+      await this.page.waitForTimeout(1000);
     }
   }
   async profileComplete() {
@@ -195,11 +195,13 @@ class TripPage {
 
     // Continue
     await this.TripcontinueBtn.click();
-    //additional info
-    await this.additionalInfoField.click();
-    await this.additionalInfoField.fill(faker.lorem.paragraph());
   }
-  
+  async additionalInfoFill() {
+    const additionalInfo = faker.lorem.paragraph();
+    await this.additionalInfoField.click();
+    await this.additionalInfoField.fill(additionalInfo);
+  }
+
   async clickPlusRandom() {
     const times = Math.floor(Math.random() * 24) + 1; // 1–24 clicks
 
