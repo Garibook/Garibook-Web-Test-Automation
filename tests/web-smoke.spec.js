@@ -42,7 +42,7 @@ test("Garibook Page Navigation Smoke Test with 10s Delay", async ({
   await page.goto("/");
 
   const login = new LoginPage(page);
-  const mobile = getMobile("mobile2");
+  const mobile = getMobile("mobile6");
 
   await login.getOTP(mobile);
   await login.extractOTPandFill();

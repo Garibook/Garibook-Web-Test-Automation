@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import LoginPage from "../pages/loginPage";
 import CancelTrip from "../pages/cancelTrip";
+import { getMobile } from "../utils/mobileDataRead";
 
 test("Cancel Trip successfully", async ({ page }) => {
   await page.goto("/");
