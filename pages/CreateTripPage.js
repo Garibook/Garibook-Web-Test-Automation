@@ -38,7 +38,7 @@ class TripPage {
 
     //pickup selectors for hourly
     this.hourlyPickupSuggestion = page.getByRole("button", {
-      name: "Mohakhali Model High School, Mohakhali School Road, Dhaka, Bangladesh",
+      name: "Mohakhali Bus Terminal, Dhaka, Bangladesh",
     });
     this.plusBtn = page.getByRole("button", { name: "+" }); //hour increase '+' button
     this.additionalInfoField = page.getByRole("textbox", {
@@ -133,6 +133,7 @@ class TripPage {
       await this.ProfilecontinueButton.click();
 
       await this.profileComplete();
+      await this.page.waitForTimeout(2000);
       await this.confirmTripBtn.click();
       await this.page.waitForTimeout(1000);
     }
@@ -142,8 +143,8 @@ class TripPage {
     const name = faker.person.fullName();
     await this.nameTextbox.click();
     await this.nameTextbox.fill(name);
-
-    // Final Continue
+    await this.page.waitForTimeout(2000);
+    // Final Profile Continue
     await this.page
       .getByRole("button", { name: "Continue", exact: true })
       .click();

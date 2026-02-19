@@ -11,7 +11,8 @@ test("Profile Update Successfully", async ({ page }) => {
   const mobile = getMobile("mobile5");
   const profile = new Profile(page);
   await login.getOTP(mobile);
-  await login.extractOTPandFill();
+  // await login.extractOTPandFill();
+    await login.getOTPfromManualTyping();
   await page.waitForTimeout(3000);
   const name = faker.person.fullName();
   const dob = faker.date

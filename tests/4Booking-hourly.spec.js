@@ -9,7 +9,8 @@ test.describe.serial("Book hourly car flow test", () => {
     const login = new LoginPage(page);
     const mobile = getMobile("mobile4");
     await login.getOTP(mobile);
-    await login.extractOTPandFill();
+    // await login.extractOTPandFill();
+    await login.getOTPfromManualTyping();
     await page.waitForTimeout(2000);
     //slide down
     await page.evaluate(() => {
@@ -39,7 +40,8 @@ test.describe.serial("Book hourly car flow test", () => {
     const login = new LoginPage(page);
     const mobile = getMobile("mobile4");
     await login.getOTP(mobile);
-    await login.extractOTPandFill();
+    // await login.extractOTPandFill();
+    await login.getOTPfromManualTyping();
     await page.waitForTimeout(2000);
     //slide down
     await page.evaluate(() => {

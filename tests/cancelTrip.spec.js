@@ -6,9 +6,10 @@ import { getMobile } from "../utils/mobileDataRead";
 test("Cancel Trip successfully", async ({ page }) => {
   await page.goto("/");
   const login = new LoginPage(page);
-  const mobile = getMobile("mobile3");
+  const mobile = getMobile("mobile5");
   await login.getOTP(mobile);
-  await login.extractOTPandFill();
+  // await login.extractOTPandFill();
+  await login.getOTPfromManualTyping();
   await page.waitForTimeout(3000);
   await page.goto("/trip/ongoing-bidding");
   const cancel = new CancelTrip(page);

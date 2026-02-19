@@ -2,25 +2,25 @@ import { test, expect } from "@playwright/test";
 import AirportTripPage from "../pages/AirportCreateTrip";
 import LoginPage from "../pages/loginPage";
 import { getMobile } from "../utils/mobileDataRead";
+import TripPage from "../pages/CreateTripPage";
 
 test.describe.serial("Login & Airport Rental Flow from Home", () => {
-  test("Book Airport Rental", async ({ page }) => {
+  test.only("Book Airport Rental", async ({ page }) => {
     await page.goto("/");
     const login = new LoginPage(page);
-    const mobile = getMobile("mobile5");
+    const mobile = getMobile("mobile6");
 
     await login.getOTP(mobile);
-    await login.extractOTPandFill();
-
-    await page.waitForLoadState("networkidle");
+    // await login.extractOTPandFill();
+    await login.getOTPfromManualTyping();
 
     const tripAirport = new AirportTripPage(page);
-
+    const trip = new TripPage(page);
     await tripAirport.fillAirportTripFormHome();
 
     await tripAirport.confirmTrip();
 
-    await tripAirport.checkAndCompleteProfile();
+    await trip.checkAndCompleteProfile();
 
     await expect(page.locator(".swal2-popup .swal2-html-container")).toHaveText(
       "Trip created successfuly",
@@ -35,7 +35,8 @@ test.describe.serial("Login & Airport Rental Flow from Home", () => {
     const login = new LoginPage(page);
     const mobile = getMobile("mobile6");
     await login.getOTP(mobile);
-    await login.extractOTPandFill();
+    // await login.extractOTPandFill();
+    await login.getOTPfromManualTyping();
 
     const tripAirport = new AirportTripPage(page);
 

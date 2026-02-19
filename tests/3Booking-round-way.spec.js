@@ -9,7 +9,8 @@ test.describe.serial("Login & round-way Trip create flow test", () => {
     const login = new LoginPage(page);
     const mobile = getMobile("mobile3");
     await login.getOTP(mobile);
-    await login.extractOTPandFill();
+    // await login.extractOTPandFill();
+    await login.getOTPfromManualTyping();
     await page.waitForTimeout(2000);
     //slide down
     await page.evaluate(() => {
@@ -40,7 +41,8 @@ test.describe.serial("Login & round-way Trip create flow test", () => {
     const login = new LoginPage(page);
     const mobile = getMobile("mobile3");
     await login.getOTP(mobile);
-    await login.extractOTPandFill();
+    // await login.extractOTPandFill();
+    await login.getOTPfromManualTyping();
     await page.waitForTimeout(2000);
     //slide down
     await page.evaluate(() => {
