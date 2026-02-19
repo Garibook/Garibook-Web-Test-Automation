@@ -40,7 +40,8 @@ class AirportTripPage {
     this.nameTextbox = page.getByRole("textbox", { name: "Name" });
   }
 
-  async fillAirportTripFormAirport() {
+  async fillAirportTripFormAirport() 
+  {
     await this.airportRentalBtn.click();
     await this.selectCarTypeBtn.click();
     await this.sedanOption.click();
@@ -54,9 +55,8 @@ class AirportTripPage {
     await this.dropoffInput.fill("mirpur");
     await this.dropoffSuggestion.click();
 
-    // --- Robust Date Handling ---
+    
     await this.dateInput.click();
-   
     await this.page.keyboard.type("02/20/2026 10:00 AM");
     await this.page.keyboard.press("Enter");
     
@@ -64,7 +64,8 @@ class AirportTripPage {
     await this.tripContinueBtn.click();
   }
 
-async fillAirportTripFormHome() {
+async fillAirportTripFormHome() 
+{
     await this.airportRentalBtn.click();
     await this.fromHomeRadio.check();
     await this.selectCarTypeBtn.click();
@@ -83,9 +84,9 @@ async fillAirportTripFormHome() {
 
 
     await this.dateInput.click();
-   
     await this.page.keyboard.type("02/20/2026 10:00 AM");
     await this.page.keyboard.press("Enter");
+
     
     await this.page.waitForTimeout(1000); // Small pause for the UI to register inputs
     await this.tripContinueBtn.click();
@@ -93,10 +94,10 @@ async fillAirportTripFormHome() {
 
   
   async confirmTrip() {
-    // Wait up to 15 seconds as calculations/pricing might take a moment
     await this.confirmTripBtn.waitFor({ state: 'visible', timeout: 15000 });
     await this.confirmTripBtn.click();
   }
+
 
   async checkAndCompleteProfile() {
     await this.page.waitForTimeout(1500); 
@@ -110,6 +111,8 @@ async fillAirportTripFormHome() {
     }
   }
 
+
+  
   async completeProfileDetails() {
     const randomName = faker.person.fullName();
     await this.nameTextbox.fill(randomName);
