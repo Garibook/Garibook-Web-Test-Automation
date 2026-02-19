@@ -12,7 +12,7 @@ test("has title", async ({ page }) => {
 
 test("User should login successfully using OTP", async ({ page }) => {
   const login = new LoginPage(page);
-  const mobile = getMobile("mobile3");
+  const mobile = getMobile("mobile1");
 
   await page.goto("/");
   await login.getOTP(mobile);
@@ -34,7 +34,7 @@ test("Phone number Validation check with invalid number", async ({ page }) => {
 
 test("User should not login with invalid OTP", async ({ page }) => {
   const login = new LoginPage(page);
-  const mobile = getMobile("mobile3");
+  const mobile = getMobile("mobile1");
   console.log(mobile);
   await page.goto("/");
   await login.getOTP(mobile);

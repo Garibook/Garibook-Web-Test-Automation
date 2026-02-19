@@ -33,7 +33,7 @@ test.describe.serial("Login & Airport Rental Flow from Home", () => {
     await page.goto("/");
 
     const login = new LoginPage(page);
-    const mobile = getMobile("mobile5");
+    const mobile = getMobile("mobile6");
     await login.getOTP(mobile);
     await login.extractOTPandFill();
 

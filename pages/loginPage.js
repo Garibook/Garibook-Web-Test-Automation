@@ -41,6 +41,11 @@ class LoginPage {
     // Continue
     await this.continueButton.click();
   }
+  async getOTPfromManualTyping() {
+    console.log("Please enter OTP manually in browser...");
+    await this.page.pause();
+    await this.continueButton.click();
+  }
 }
 
 export default LoginPage;

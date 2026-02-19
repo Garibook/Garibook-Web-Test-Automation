@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker";
-
+import { generatePickupAndReturnDates } from "../utils/DateTimeUtils.js";
+const { pickupDate, returnDate } = generatePickupAndReturnDates();
 class TripPage {
   constructor(page) {
     this.page = page;
@@ -49,7 +50,7 @@ class TripPage {
       name: "Enter Drop-off Location",
     });
     this.dropoffSuggestion = page.getByRole("button", {
-      name: "Bagura Mistanno Vandar, Bakshiganj, Bangladesh",
+      name: "Bagura, Dupchanchia, Bangladesh",
     });
 
     // Date & time
@@ -111,7 +112,7 @@ class TripPage {
 
     // Date & time
     await this.dateInput.click();
-    await this.dateInput.fill("2026-02-03 09:00 AM");
+    await this.dateInput.fill(pickupDate);
     await this.dateInput.press("Enter");
     await this.page.waitForTimeout(2000);
 
@@ -164,10 +165,10 @@ class TripPage {
 
     // Date & time
     await this.pickupDateTime.click();
-    await this.pickupDateTime.fill("2026-02-03 09:00 AM");
+    await this.pickupDateTime.fill(pickupDate);
     await this.pickupDateTime.press("Enter");
     await this.returnDateTime.click();
-    await this.returnDateTime.fill("2026-02-05 09:00 AM");
+    await this.returnDateTime.fill(returnDate);
     await this.returnDateTime.press("Enter");
     await this.page.waitForTimeout(2000);
 
@@ -188,7 +189,7 @@ class TripPage {
 
     // Date & time
     await this.dateInput.click();
-    await this.dateInput.fill("2026-02-03 09:00 AM");
+    await this.dateInput.fill(pickupDate);
     await this.dateInput.press("Enter");
     await this.page.waitForTimeout(2000);
     await this.clickPlusRandom();
