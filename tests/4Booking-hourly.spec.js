@@ -7,7 +7,7 @@ test.describe.serial("Book hourly car flow test", () => {
   test("Book Car hourly successfully", async ({ page }) => {
     await page.goto("/");
     const login = new LoginPage(page);
-    const mobile = getMobile("mobile5");
+    const mobile = getMobile("mobile4");
     await login.getOTP(mobile);
     await login.extractOTPandFill();
     await page.waitForTimeout(2000);
@@ -37,7 +37,7 @@ test.describe.serial("Book hourly car flow test", () => {
   }) => {
     await page.goto("/");
     const login = new LoginPage(page);
-    const mobile = getMobile("mobile5");
+    const mobile = getMobile("mobile4");
     await login.getOTP(mobile);
     await login.extractOTPandFill();
     await page.waitForTimeout(2000);

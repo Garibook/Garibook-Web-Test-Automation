@@ -7,7 +7,7 @@ test.describe.serial("Login & round-way Trip create flow test", () => {
   test("Book Round way car successfully", async ({ page }) => {
     await page.goto("/");
     const login = new LoginPage(page);
-    const mobile = getMobile("mobile4");
+    const mobile = getMobile("mobile3");
     await login.getOTP(mobile);
     await login.extractOTPandFill();
     await page.waitForTimeout(2000);
@@ -38,7 +38,7 @@ test.describe.serial("Login & round-way Trip create flow test", () => {
   }) => {
     await page.goto("/");
     const login = new LoginPage(page);
-    const mobile = getMobile("mobile4");
+    const mobile = getMobile("mobile3");
     await login.getOTP(mobile);
     await login.extractOTPandFill();
     await page.waitForTimeout(2000);
