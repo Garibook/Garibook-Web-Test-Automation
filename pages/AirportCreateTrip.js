@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker";
-
+import { generatePickupAndReturnDates } from "../utils/DateTimeUtils.js";
+const { pickupDate, returnDate } = generatePickupAndReturnDates();
 class AirportTripPage {
   constructor(page) {
     this.page = page;
@@ -74,7 +75,7 @@ class AirportTripPage {
     await this.dropoffSuggestion.click();
 
     await this.dateInput.click();
-    await this.page.keyboard.type("02/20/2026 10:00 AM");
+    await this.page.keyboard.type(pickupDate);
     await this.page.keyboard.press("Enter");
 
     await this.page.waitForTimeout(1000); // Small pause for the UI to register inputs
@@ -97,7 +98,7 @@ class AirportTripPage {
     await this.airportOption.click();
 
     await this.dateInput.click();
-    await this.page.keyboard.type("02/20/2026 10:00 AM");
+    await this.page.keyboard.type(returnDate);
     await this.page.keyboard.press("Enter");
 
     await this.page.waitForTimeout(1000); // Small pause for the UI to register inputs
