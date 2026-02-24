@@ -3,7 +3,7 @@ import AirportTripPage from "../pages/AirportCreateTrip";
 import LoginPage from "../pages/loginPage";
 import { getMobile } from "../utils/mobileDataRead";
 import TripPage from "../pages/CreateTripPage";
-
+import CancelTrip from "../pages/cancelTrip";
 test.describe.serial("Login & Airport Rental Flow", () => {
   test.only("Book Airport Rental", async ({ page }) => {
     await page.goto("/");
@@ -11,11 +11,12 @@ test.describe.serial("Login & Airport Rental Flow", () => {
     const mobile = getMobile("mobile5");
 
     await login.getOTP(mobile);
-    // await login.extractOTPandFill();
+    //await login.extractOTPandFill();
     await login.getOTPfromManualTyping();
 
     const tripAirport = new AirportTripPage(page);
     const trip = new TripPage(page);
+    await page.waitForTimeout(7000);
     await tripAirport.fillAirportTripFormAirport();
 
     await tripAirport.confirmTrip();
@@ -24,6 +25,15 @@ test.describe.serial("Login & Airport Rental Flow", () => {
 
     await expect(page.locator(".swal2-popup .swal2-html-container")).toHaveText(
       "Trip created successfuly",
+    );
+    //cancel Trip after creating successfully
+    await page.waitForTimeout(3000);
+    await page.goto("/trip/ongoing-bidding");
+    const cancel = new CancelTrip(page);
+    await cancel.doCancel();
+    await page.waitForTimeout(2000);
+    await expect(page.locator(".swal2-popup #swal2-title")).toHaveText(
+      "Trip Cancellation Successful",
     );
   });
 

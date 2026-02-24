@@ -33,7 +33,7 @@ export default defineConfig({
 
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://fe.garibook.com',
+    //baseURL: "http://fe.garibook.com",
     baseURL: " https://garibook.com/",
     screenshot: "only-on-failure",
     headless: false,

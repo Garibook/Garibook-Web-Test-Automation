@@ -24,9 +24,9 @@ class TripPage {
       name: "Sedan Economy 4 Seats",
     });
 
-    this.chanderGari8SeatsBtn = page.getByRole("button", {
-      name: "Chander Gari 8 Seats",
-    });
+    // this.chanderGari8SeatsBtn = page.getByRole("button", {
+    //   name: "Chander Gari 8 Seats",
+    // });
 
     // Pickup
     this.pickupInput = page.getByRole("textbox", {

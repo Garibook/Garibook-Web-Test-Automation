@@ -6,7 +6,7 @@ import { getMobile } from "../utils/mobileDataRead";
 test("Cancel Trip successfully", async ({ page }) => {
   await page.goto("/");
   const login = new LoginPage(page);
-  const mobile = getMobile("mobile5");
+  const mobile = getMobile("mobile2");
   await login.getOTP(mobile);
   // await login.extractOTPandFill();
   await login.getOTPfromManualTyping();

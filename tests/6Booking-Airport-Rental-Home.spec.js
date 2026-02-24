@@ -3,6 +3,7 @@ import AirportTripPage from "../pages/AirportCreateTrip";
 import LoginPage from "../pages/loginPage";
 import { getMobile } from "../utils/mobileDataRead";
 import TripPage from "../pages/CreateTripPage";
+import CancelTrip from "../pages/cancelTrip";
 
 test.describe.serial("Login & Airport Rental Flow from Home", () => {
   test.only("Book Airport Rental", async ({ page }) => {
@@ -25,6 +26,16 @@ test.describe.serial("Login & Airport Rental Flow from Home", () => {
     await expect(page.locator(".swal2-popup .swal2-html-container")).toHaveText(
       "Trip created successfuly",
     );
+
+    //cancel Trip after creating successfully
+    await page.waitForTimeout(3000);
+    await page.goto("/trip/ongoing-bidding");
+    const cancel = new CancelTrip(page);
+    await cancel.doCancel();
+    await page.waitForTimeout(2000);
+    await expect(page.locator(".swal2-popup #swal2-title")).toHaveText(
+      "Trip Cancellation Successful",
+    );
   });
 
   test("User should not be able to book if an airport trip from Home already exists", async ({
@@ -35,8 +46,8 @@ test.describe.serial("Login & Airport Rental Flow from Home", () => {
     const login = new LoginPage(page);
     const mobile = getMobile("mobile6");
     await login.getOTP(mobile);
-    // await login.extractOTPandFill();
-    await login.getOTPfromManualTyping();
+    await login.extractOTPandFill();
+    //await login.getOTPfromManualTyping();
 
     const tripAirport = new AirportTripPage(page);
 

@@ -2,9 +2,10 @@ import { test, expect } from "@playwright/test";
 import tripPage from "../pages/CreateTripPage";
 import LoginPage from "../pages/loginPage";
 import { getMobile } from "../utils/mobileDataRead";
+import CancelTrip from "../pages/cancelTrip";
 
 test.describe.serial("Login & round-way Trip create flow test", () => {
-  test("Book Round way car successfully", async ({ page }) => {
+  test.only("Book Round way car successfully", async ({ page }) => {
     await page.goto("/");
     const login = new LoginPage(page);
     const mobile = getMobile("mobile3");
@@ -32,6 +33,16 @@ test.describe.serial("Login & round-way Trip create flow test", () => {
     //Assertion for trip created successfully
     await expect(page.locator("#swal2-html-container")).toHaveText(
       "Trip created successfuly",
+    );
+
+    //cancel Trip after creating successfully
+    await page.waitForTimeout(3000);
+    await page.goto("/trip/ongoing-bidding");
+    const cancel = new CancelTrip(page);
+    await cancel.doCancel();
+    await page.waitForTimeout(2000);
+    await expect(page.locator(".swal2-popup #swal2-title")).toHaveText(
+      "Trip Cancellation Successful",
     );
   });
   test("User should not be able to Book Round way car if trip already exist", async ({
