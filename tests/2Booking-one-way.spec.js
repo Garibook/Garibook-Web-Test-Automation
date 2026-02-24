@@ -4,7 +4,7 @@ import LoginPage from "../pages/loginPage";
 import { getMobile } from "../utils/mobileDataRead";
 
 test.describe.serial("Login & one-way Trip create flow test", () => {
-  test("Book one way car", async ({ page }) => {
+  test.only("Book one way car", async ({ page }) => {
     await page.goto("/");
     const login = new LoginPage(page);
     const mobile = getMobile("mobile2");
@@ -41,7 +41,8 @@ test.describe.serial("Login & one-way Trip create flow test", () => {
     const login = new LoginPage(page);
     const mobile = getMobile("mobile2");
     await login.getOTP(mobile);
-    await login.extractOTPandFill();
+    //await login.extractOTPandFill();
+    await login.getOTPfromManualTyping();
     await page.waitForTimeout(2000);
     //slide down
     await page.evaluate(() => {
