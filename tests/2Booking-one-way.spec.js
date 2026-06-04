@@ -4,13 +4,13 @@ import LoginPage from "../pages/loginPage";
 import { getMobile } from "../utils/mobileDataRead";
 
 test.describe.serial("Login & one-way Trip create flow test", () => {
-  test.only("Book one way car", async ({ page }) => {
+  test("Book one way car", async ({ page }) => {
     await page.goto("/");
     const login = new LoginPage(page);
     const mobile = getMobile("mobile2");
     await login.getOTP(mobile);
-    // await login.extractOTPandFill();
-    await login.getOTPfromManualTyping();
+    await login.extractOTPandFill();
+    //await login.getOTPfromManualTyping();
     await page.waitForTimeout(2000);
     //slide down
     await page.evaluate(() => {
@@ -41,8 +41,8 @@ test.describe.serial("Login & one-way Trip create flow test", () => {
     const login = new LoginPage(page);
     const mobile = getMobile("mobile2");
     await login.getOTP(mobile);
-    //await login.extractOTPandFill();
-    await login.getOTPfromManualTyping();
+    await login.extractOTPandFill();
+    //await login.getOTPfromManualTyping();
     await page.waitForTimeout(2000);
     //slide down
     await page.evaluate(() => {
