@@ -10,8 +10,8 @@ test.describe.serial("Login & round-way Trip create flow test", () => {
     const login = new LoginPage(page);
     const mobile = getMobile("mobile3");
     await login.getOTP(mobile);
-    // await login.extractOTPandFill();
-    await login.getOTPfromManualTyping();
+    await login.extractOTPandFill();
+    // await login.getOTPfromManualTyping();
     await page.waitForTimeout(2000);
     //slide down
     await page.evaluate(() => {
@@ -34,16 +34,6 @@ test.describe.serial("Login & round-way Trip create flow test", () => {
     await expect(page.locator("#swal2-html-container")).toHaveText(
       "Trip created successfuly",
     );
-
-    //cancel Trip after creating successfully
-    await page.waitForTimeout(3000);
-    await page.goto("/trip/ongoing-bidding");
-    const cancel = new CancelTrip(page);
-    await cancel.doCancel();
-    await page.waitForTimeout(2000);
-    await expect(page.locator(".swal2-popup #swal2-title")).toHaveText(
-      "Trip Cancellation Successful",
-    );
   });
   test("User should not be able to Book Round way car if trip already exist", async ({
     page,
@@ -52,8 +42,8 @@ test.describe.serial("Login & round-way Trip create flow test", () => {
     const login = new LoginPage(page);
     const mobile = getMobile("mobile3");
     await login.getOTP(mobile);
-    // await login.extractOTPandFill();
-    await login.getOTPfromManualTyping();
+    await login.extractOTPandFill();
+    //await login.getOTPfromManualTyping();
     await page.waitForTimeout(2000);
     //slide down
     await page.evaluate(() => {

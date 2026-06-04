@@ -11,8 +11,8 @@ test.describe.serial("Login & Airport Rental Flow", () => {
     const mobile = getMobile("mobile5");
 
     await login.getOTP(mobile);
-    //await login.extractOTPandFill();
-    await login.getOTPfromManualTyping();
+    await login.extractOTPandFill();
+    //await login.getOTPfromManualTyping();
 
     const tripAirport = new AirportTripPage(page);
     const trip = new TripPage(page);
