@@ -8,8 +8,8 @@ test("Cancel Trip successfully", async ({ page }) => {
   const login = new LoginPage(page);
   const mobile = getMobile("mobile2");
   await login.getOTP(mobile);
-  // await login.extractOTPandFill();
-  await login.getOTPfromManualTyping();
+  await login.extractOTPandFill();
+  // await login.getOTPfromManualTyping();
   await page.waitForTimeout(3000);
   await page.goto("/trip/ongoing-bidding");
   const cancel = new CancelTrip(page);

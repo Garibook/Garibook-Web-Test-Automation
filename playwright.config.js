@@ -34,7 +34,7 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     //baseURL: "http://fe.garibook.com",
-    baseURL: " https://garibook.com/",
+    baseURL: " http://192.168.16.96:3001/",
     screenshot: "only-on-failure",
     headless: false,
     actionTimeout: 10000,

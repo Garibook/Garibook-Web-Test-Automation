@@ -50,7 +50,7 @@ class TripPage {
       name: "Enter Drop-off Location",
     });
     this.dropoffSuggestion = page.getByRole("button", {
-      name: "Bagura, Dupchanchia, Bangladesh",
+      name: "Bagura, Bangladesh",
     });
 
     // Date & time

@@ -12,8 +12,8 @@ test.describe.serial("Login & Airport Rental Flow from Home", () => {
     const mobile = getMobile("mobile6");
 
     await login.getOTP(mobile);
-    // await login.extractOTPandFill();
-    await login.getOTPfromManualTyping();
+    await login.extractOTPandFill();
+    //await login.getOTPfromManualTyping();
 
     const tripAirport = new AirportTripPage(page);
     const trip = new TripPage(page);
@@ -28,14 +28,14 @@ test.describe.serial("Login & Airport Rental Flow from Home", () => {
     );
 
     //cancel Trip after creating successfully
-    await page.waitForTimeout(3000);
-    await page.goto("/trip/ongoing-bidding");
-    const cancel = new CancelTrip(page);
-    await cancel.doCancel();
-    await page.waitForTimeout(2000);
-    await expect(page.locator(".swal2-popup #swal2-title")).toHaveText(
-      "Trip Cancellation Successful",
-    );
+    // await page.waitForTimeout(3000);
+    // await page.goto("/trip/ongoing-bidding");
+    // const cancel = new CancelTrip(page);
+    // await cancel.doCancel();
+    // await page.waitForTimeout(2000);
+    // await expect(page.locator(".swal2-popup #swal2-title")).toHaveText(
+    //   "Trip Cancellation Successful",
+    // );
   });
 
   test("User should not be able to book if an airport trip from Home already exists", async ({
