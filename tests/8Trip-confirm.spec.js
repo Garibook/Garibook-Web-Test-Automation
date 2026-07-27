@@ -8,7 +8,7 @@ import path from "path";
 test("Trip Confirm Successfully", async ({ page }) => {
   await page.goto("/");
   const login = new LoginPage(page);
-  const mobile = getMobile("mobile5");
+  const mobile = getMobile("mobile6");
   const profile = new Profile(page);
   await login.getOTP(mobile);
   await login.extractOTPandFill();
