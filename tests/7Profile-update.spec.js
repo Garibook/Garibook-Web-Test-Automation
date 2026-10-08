@@ -4,7 +4,7 @@ import { getMobile } from "../utils/mobileDataRead";
 import { faker } from "@faker-js/faker";
 import Profile from "../pages/ProfilePage";
 import path from "path";
-
+// **Don't run this test if notification and sms notifications are not turned off in stage
 test("Profile Update Successfully", async ({ page }) => {
   await page.goto("/");
   const login = new LoginPage(page);
