@@ -4,7 +4,7 @@ import LoginPage from "../pages/loginPage";
 import { getMobile } from "../utils/mobileDataRead";
 import { log } from "node:console";
 
-test.describe("Login & one-way Trip create flow test", () => {
+test.describe.serial("Login & one-way Trip create flow test", () => {
   test("has title", async ({ page }) => {
     await page.goto("/");
 
